@@ -10,7 +10,9 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<HomeInitialEvent>(homeInitialEvent);
+    on<HomeEmptyTextFieldEvent>(homeEmptyTextFieldEvent);
     on<HomeNavigateToProfileEvent>(homeNavigateToProfileEvent);
+    on<HomeNavigateToSearchEvent>(homeNavigateToSearchEvent);
   }
 
   // initial event
@@ -27,5 +29,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   homeNavigateToProfileEvent(
       HomeNavigateToProfileEvent event, Emitter<HomeState> emit) {
     emit(HomeNavigateToProfileState());
+  }
+
+  homeNavigateToSearchEvent(
+      HomeNavigateToSearchEvent event, Emitter<HomeState> emit) {
+    emit(HomeNavigateToSearchState(searchText: event.searchTitle));
+  }
+
+//   empty text field
+  homeEmptyTextFieldEvent(
+      HomeEmptyTextFieldEvent event, Emitter<HomeState> emit) {
+    emit(HomeEmptyTextFieldState());
   }
 }

@@ -14,5 +14,13 @@ class HomeLoadingFailureState extends HomeState {}
 // action state
 abstract class HomeActionState extends HomeState {}
 
+class HomeEmptyTextFieldState extends HomeActionState {}
+
 // navigation
 class HomeNavigateToProfileState extends HomeActionState {}
+
+class HomeNavigateToSearchState extends HomeActionState {
+  final String searchText;
+
+  HomeNavigateToSearchState({required this.searchText});
+}

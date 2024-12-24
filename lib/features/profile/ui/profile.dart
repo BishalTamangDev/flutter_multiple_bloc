@@ -10,7 +10,10 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  // variables
   ProfileBloc profileBloc = ProfileBloc();
+
+  var searchController = TextEditingController();
 
   @override
   void initState() {
@@ -44,29 +47,20 @@ class _ProfileState extends State<Profile> {
                 title: const Text("Profile"),
                 centerTitle: true,
               ),
-              body: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                  child: Column(
-                    spacing: 16.0,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 32.0),
-                      Container(
-                        width: double.maxFinite,
-                        height: 200,
-                        color: Colors.grey.shade100,
-                      ),
-                      const Text(
-                        "Hello World!",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
+              body: const Center(
+                child: Text("Profile page"),
               ),
             );
           case ProfileLoadingFailureState:
+            return Scaffold(
+              appBar: AppBar(
+                title: const Text("Profile"),
+                centerTitle: true,
+              ),
+              body: const Center(
+                child: Text("Error in loading profile page"),
+              ),
+            );
           default:
             return Scaffold(
               appBar: AppBar(
